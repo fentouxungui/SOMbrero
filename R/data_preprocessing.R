@@ -17,6 +17,7 @@ preprocessData <- function(x.data, scaling, tolerance = 10^(-10)) {
 
 unitvarPreprocess <- function(x.data) {
   all.variances <- apply(x.data, 2, sd, na.rm = TRUE)
+  all.variances[is.na(all.variances)] <- 0
   if (any(all.variances == 0)) {
     ### remove data with null variance
     to.remove <- which(all.variances == 0)

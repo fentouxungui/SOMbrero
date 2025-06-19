@@ -62,7 +62,7 @@ the argument \code{what} set to \code{"add"}.}
 \item{type}{The type of plot to draw. Default value is \code{"dendrogram"}, 
 to plot the dendrogram of the clustering. Case \code{"grid"} plots the grid 
 in color according to the super clustering. Case \code{"projgraph"} uses an
-\link[igraph]{igraph} object passed to the argument \code{variable} and plots
+\link[igraph]{is_igraph} object passed to the argument \code{variable} and plots
 the projected graph as defined by the function \code{projectIGraph.somSC}.
 All other cases are those available in the function \code{\link{plot.somRes}} 
 and surimpose the super-clusters over these plots.}
@@ -96,7 +96,7 @@ The \code{superClass} function returns an object of class
   \code{\link{trainSOM}} for details).}
   
 The \code{projectIGraph.somSC} function returns an object of class 
-\code{\link{igraph}} with the following attributes: 
+\code{\link[igraph]{is_igraph}} with the following attributes: 
   \item{\code{layout}}{ provides the layout of the projected graph 
   according to the center of gravity of the super-clusters positioned on 
   the SOM grid (graph attribute);}
@@ -146,7 +146,7 @@ with a N, with a K for a \code{korresp} SOM and with a R for
 \code{relational} SOM.
 
 \code{\link{projectIGraph.somSC}} produces a projected graph from the 
-\link[igraph]{igraph} object passed to the argument \code{variable} as 
+\link[igraph]{is_igraph} object passed to the argument \code{variable} as 
 described in (Olteanu and Villa-Vialaneix, 2015). The attributes of this 
 graph are the same than the ones obtained from the SOM map itself in the 
 function \code{\link{projectIGraph.somRes}}. \code{\link{plot.somSC}} used with 

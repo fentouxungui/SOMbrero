@@ -10,7 +10,9 @@
 #' @return This function starts the graphical user interface with the default 
 #' system browser. This interface is more lickely to work properly with Firefox
 #' \url{https://www.mozilla.org/fr/firefox/new/}. In case Firefox is not your 
-#' default browser, copy/paste http://localhost:8100 into the URL bar.
+#' default browser, copy/paste http://localhost:8100 into the URL bar.\cr
+#' Note that the same interface is available online at 
+#' \url{https://sombrero.sk8.inrae.fr/}.
 #' 
 #' @author Élise Maigné <elise.maigne@inrae.fr>\cr
 #' Julien Boelaert \email{julien.boelaert@gmail.com}\cr

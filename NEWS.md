@@ -1,3 +1,12 @@
+# SOMbrero 1.4-2 [2025-06-25]
+
+## Bug fix
+  * corrected a bug for datasets with NA columns
+  * corrected a bug in ggplot tests
+  
+## Misc
+  * added reference to sk8 instance of the shiny app
+
 # SOMbrero 1.4-2 [2024-01-24]
 
 ## Bug fix
