@@ -2,7 +2,7 @@
 % Please edit documentation in R/plots.R
 \name{plot.somRes}
 \alias{plot.somRes}
-\title{Plot a \code{somRes} class object}
+\title{Plot a \code{somRes} Object}
 \usage{
 \method{plot}{somRes}(
   x,

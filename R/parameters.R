@@ -1,6 +1,6 @@
 ## These functions handle the parameters of SOM learning
 ## ----------------------------------------------------------------------------
-#' @title Initialize parameters for the SOM algorithm
+#' @title Initialize Parameters for the SOM Algorithm
 #' @export
 #' @name initSOM
 #' 

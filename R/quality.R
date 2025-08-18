@@ -73,7 +73,7 @@ quantizationError <- function(sommap) {
 # main functions
 ###############################################################################
 
-#' @title Compute SOM algorithm quality criteria
+#' @title Compute SOM Quality Criteria
 #' @name quality
 #' @aliases quality.somRes
 #' @export

@@ -89,7 +89,7 @@ pcaPrototypes <- function(dim1, dim2, type, norm.x.data) {
   } else { # type is 'relational'
     # perform MDS
     data.mds <- cmdscale(norm.x.data)
-    scores <- data.pca$scores[, c(x.ev, y.ev)]
+    scores <- data.mds[, c(x.ev, y.ev)]
   }
   
   x <- seq(from       = quantile(scores[, 1], .025), 
@@ -110,6 +110,7 @@ pcaPrototypes <- function(dim1, dim2, type, norm.x.data) {
   } else { # type is 'relational'
     # prototypes are coefficients: the closest only is equal to 1
     prototypes <- matrix(0, ncol = nrow(norm.x.data), nrow = dim1 * dim2)
+    closest.obs <- cbind(seq_along(closest.obs), closest.obs)
     prototypes[closest.obs] <- 1
   }
   

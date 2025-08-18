@@ -290,7 +290,7 @@ plotPrototypes <- function(sommap, type, variable, my.palette, show.names,
       dataplot <- data.frame(x = proj.coord[,1], y = proj.coord[,2], 
                              "labels" = args$labels, 
                              "Super_Cluster" = as.factor(args$sc))
-      ggplot(dataplot, aes(x = "x", y = "y")) + 
+      ggplot(dataplot, aes(x = .data$x, y = .data$y)) + 
         geom_text(aes(label = .data$labels, col = .data$Super_Cluster), 
                   alpha = 0.7, size = args$cex, fontface = "bold") +
         labs(x = "x", y = "y", title = "Prototypes visualization by MDS") +
@@ -530,7 +530,7 @@ plotAdd <- function(sommap, type, variable, proportional, my.palette,
   }
 }
 
-#' @title Plot a \code{somRes} class object
+#' @title Plot a \code{somRes} Object
 #' @name plot.somRes
 #' @export
 #' 

@@ -1,6 +1,6 @@
 # SOM prediction functions ####
 
-#' @title Predict the classification of a new observation
+#' @title Predict the Class of a New Observation
 #' @export
 #' @name predict.somRes
 #' 

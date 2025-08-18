@@ -49,7 +49,7 @@ NULL
 
 ## presidentielles2020
 ###############################################################################
-#' @title 2002 French presidential election data set
+#' @title 2002 French Presidential Election Dataset
 #' @name presidentielles2002
 #' 
 #' @description This data set provides the number of votes at the first round of

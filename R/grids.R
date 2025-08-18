@@ -1,6 +1,6 @@
 ## These functions handle maps (creation, description, display...)
 ## ----------------------------------------------------------------------------
-#' @title Create an empty grid
+#' @title Create an Empty Grid
 #' @export
 #'
 #' @description
@@ -72,7 +72,7 @@ initGrid <- function(dimension = c(5,5), topo = c("square", "hexagonal"),
 }
 
 ## Methods for objects of class 'myGrid'
-#' @title Methods for 'myGrid' objects.
+#' @title Methods for 'myGrid' Objects.
 #' @name myGrid
 #' @export
 #'

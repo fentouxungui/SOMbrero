@@ -3,7 +3,7 @@
 \docType{data}
 \name{presidentielles2002}
 \alias{presidentielles2002}
-\title{2002 French presidential election data set}
+\title{2002 French Presidential Election Dataset}
 \format{
 \code{presidentielles2002} is a data frame of 106 rows (the French
 administrative districts called "Départements") and 16 columns (the 

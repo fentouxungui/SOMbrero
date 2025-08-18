@@ -9,8 +9,9 @@ sombreroGUI()
 \value{
 This function starts the graphical user interface with the default 
 system browser. This interface is more lickely to work properly with Firefox
-\url{https://www.mozilla.org/fr/firefox/new/}. In case Firefox is not your 
-default browser, copy/paste http://localhost:8100 into the URL bar.\cr
+\url{https://www.firefox.com/fr/?redirect_source=mozilla-org}. In case 
+Firefox is not your default browser, copy/paste http://localhost:8100 into 
+the URL bar.\cr
 Note that the same interface is available online at 
 \url{https://sombrero.sk8.inrae.fr/}.
 }

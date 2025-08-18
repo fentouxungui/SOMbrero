@@ -5,7 +5,7 @@
 \alias{summary.paramSOM}
 \alias{print.paramSOM}
 \alias{paramSOM-class}
-\title{Initialize parameters for the SOM algorithm}
+\title{Initialize Parameters for the SOM Algorithm}
 \usage{
 initSOM(
   dimension = c(5, 5),

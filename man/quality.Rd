@@ -3,7 +3,7 @@
 \name{quality}
 \alias{quality}
 \alias{quality.somRes}
-\title{Compute SOM algorithm quality criteria}
+\title{Compute SOM Quality Criteria}
 \usage{
 quality(sommap, quality.type, ...)
 }

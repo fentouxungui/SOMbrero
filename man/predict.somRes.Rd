@@ -2,7 +2,7 @@
 % Please edit documentation in R/prediction.R
 \name{predict.somRes}
 \alias{predict.somRes}
-\title{Predict the classification of a new observation}
+\title{Predict the Class of a New Observation}
 \usage{
 \method{predict}{somRes}(object, x.new = NULL, ..., radius = 0)
 }

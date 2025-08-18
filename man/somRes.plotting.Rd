@@ -1,7 +1,7 @@
 \name{somRes.plotting}
 \alias{somRes.plotting}
 
-\title{Plotting \code{somRes} results}
+\title{Complete Documentation on \code{somRes} Plots}
 
 \description{
 Useful details on how to produce graphics to help interpreting a \code{somRes}

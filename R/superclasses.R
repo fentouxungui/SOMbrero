@@ -18,7 +18,7 @@ dendro3dProcess <- function(v.ind, ind, tree, coord, mat.moy, scatter) {
 }
 
 ########################## super classes #####################################
-#' @title Create super-clusters from SOM results
+#' @title Create Super-Clusters from SOM Results
 #' @name superClass
 #' @export
 #' 
@@ -35,91 +35,96 @@ dendro3dProcess <- function(v.ind, ind, tree, coord, mat.moy, scatter) {
 #' @param sommap A \code{somRes} object.
 #' @param method Argument passed to the \code{\link{hclust}} function.
 #' @param members Argument passed to the \code{\link{hclust}} function.
-#' @param k Argument passed to the \code{\link{cutree}} function (number of 
-#' super-clusters to cut the dendrogram).
-#' @param h Argument passed to the \code{\link{cutree}} function (height where 
-#' to cut the dendrogram).
+#' @param k Argument passed to the \code{\link[stats]{cutree}} function (number 
+#' of super-clusters to cut the dendrogram).
+#' @param h Argument passed to the \code{\link[stats]{cutree}} function (height 
+#' at which to cut the dendrogram).
 #' @param x A \code{somSC} object.
 #' @param object A \code{somSC} object.
 #' @param init.graph An \link[igraph]{igraph} object which is projected 
-#' according to the super-clusters. The number of vertices of \code{init.graph} 
-#' must be equal to the number of rows in the original dataset processed by the 
-#' SOM (case \code{"korresp"} is not handled by this function). In the projected
-#' graph, the vertices are positionned at the center of gravity of the 
+#' according to the super-clusters. The vertices of \code{init.graph} must
+#' correspond to the rows of the original dataset processed by SOM (note that 
+#' case \code{"korresp"} is not handled by this function). In the projected
+#' graph, the vertices are positioned at the center of gravity of the 
 #' super-clusters (more details in the section \strong{Details} below).
-#' @param what What you want to plot for superClass object. Either the 
-#' observations (\code{obs}), the prototypes (\code{prototypes}) or an 
-#' additional variable (\code{add}), or \code{NULL} if not appropriate. 
-#' Automatically set for types "hitmap" (to \code{"obs"}), 'grid' 
-#' (to \code{"prototypes"}), default to "obs" otherwise.
-#' If \code{what='add'}, the function \code{\link{plot.somRes}} will be called with
-#' the argument \code{what} set to \code{"add"}.
+#' @param what What to plot. Can be either the observations (\code{obs}), the
+#' prototypes (\code{prototypes}), an additional variable (\code{add}), or 
+#' \code{NULL} if not appropriate.\cr
+#' Automatically set for types "hitmap" (to \code{"obs"}) and \code{"grid"}, 
+#' (to \code{"prototypes"}). Default to \code{"obs"} otherwise.\cr
+#' If \code{what = "add"}, the function \code{\link{plot.somRes}} is also run
+#' with the argument \code{what} set to \code{"add"}.
 #' @param type The type of plot to draw. Default value is \code{"dendrogram"}, 
 #' to plot the dendrogram of the clustering. Case \code{"grid"} plots the grid 
-#' in color according to the super clustering. Case \code{"projgraph"} uses an
-#' \link[igraph]{is_igraph} object passed to the argument \code{variable} and plots
-#' the projected graph as defined by the function \code{projectIGraph.somSC}.
-#' All other cases are those available in the function \code{\link{plot.somRes}} 
-#' and surimpose the super-clusters over these plots.
-#' @param plot.var A boolean indicating whether a graph showing the evolution of
+#' with colors corresponding to the clusters of the super clustering. Case
+#' \code{"projgraph"} uses an \link[igraph]{is_igraph} object passed to the 
+#' argument \code{variable} and plots the projected graph as defined by the 
+#' method \code{projectIGraph}. All other cases are those available in the 
+#' function \code{\link{plot.somRes}} and superimpose the super-clusters over 
+#' these plots.
+#' @param plot.var A boolean indicating whether a plot showing the evolution of
 #' the explained variance should be plotted. This argument is only used when 
-#' \code{type="dendrogram"}, its default value is \code{TRUE}.
+#' \code{type = "dendrogram"}, its default value is \code{TRUE}.
 #' @param show.names Whether the cluster titles must be printed in center of
-#' the grid or not for \code{type="grid"}. Default to \code{FALSE} (titles not 
+#' the grid or not for \code{type = "grid"}. Default to \code{FALSE} (titles not 
 #' displayed).
 #' @param names If \code{show.names = TRUE}, values of the title to 
 #' display for \code{type="grid"}. Default to "Cluster " followed by the cluster
 #' number.
 #' @param \dots Used for \code{plot.somSC}: further arguments passed either to
-#' the function \code{\link{plot}} (case \code{type="dendro"}) or to 
-#' \code{\link{plot.myGrid}} (case \code{type="grid"}) or to 
+#' the function \code{\link{plot}} (case \code{type = "dendro"}) or to 
+#' \code{\link{plot.myGrid}} (case \code{type = "grid"}) or to 
 #' \code{\link{plot.somRes}} (all other cases).
 #' 
-#' @details The \code{superClass} function can be used in 2 ways: \itemize{
+#' @details The \code{superClass} method can be used in 2 ways: \itemize{
 #'   \item to choose the number of super clusters via an \code{\link{hclust}} 
-#'   object: then, both arguments \code{k} and \code{h} are not filled.
-#'   \item to cut the clustering into super clusters: then, either argument 
-#'   \code{k} or argument \code{h} must be filled. See \code{\link{cutree}} for
-#'   details on these arguments.
+#'   object: then, both arguments \code{k} and \code{h} can be \code{NULL}. In
+#'   this case, \code{superClass} only returns the dendrogram of the 
+#'   hierarchical clustering, which can then be cut with the method 
+#'   \code{cutree} (to which either \code{k} or \code{h} must be specified);
+#'   \item to cut the clustering into super clusters. Then, either argument 
+#'   \code{k} or argument \code{h} must be specified (see 
+#'   \code{\link[stats]{cutree}} for details).
 #' }
 #'   
 #' The squared distance between prototypes is passed to the algorithm.
 #' 
 #' \code{summary} on a \code{superClass} object produces a complete summary of 
 #' the results that displays the number of clusters and super-clusters, the 
-#' clustering itself and performs ANOVA analyses. For \code{type="numeric"} the 
-#' ANOVA is performed for each input variable and test the difference of this
-#' variable across the super-clusters of the map. For \code{type="relational"} 
-#' a dissimilarity ANOVA is performed (see (Anderson, 2001), except that in the 
-#' present version, a crude estimate of the p-value is used which is based on 
-#' the Fisher distribution and not on a permutation test.
+#' clustering itself and performs ANOVA analyses. For \code{type = "numeric"} 
+#' the ANOVA is performed for each input variable and test the difference of 
+#' this variable across the super-clusters of the map. For 
+#' \code{type = "relational"} a dissimilarity ANOVA is performed (see 
+#' (Anderson, 2001), except that in the present version, a crude estimate of the 
+#' p-value is used which is based on the Fisher distribution and not on a 
+#' permutation test.
 #' 
 #' On plots, the different super classes are identified in the following ways:
 #' \itemize{ 
 #'   \item either with different color, when \code{type} is set among: 
-#'   \code{"grid"} (N, K, R), \code{"hitmap"} (N, K, R), \code{"lines"} (N, K, R), 
-#'   \code{"barplot"} (N, K, R), \code{"boxplot"}, \code{"poly.dist"} (N, K, R), 
-#'   \code{"mds"} (N, K, R), \code{"dendro3d"} (N, K, R), \code{"graph"} (R),
-#'   \code{"projgraph"} (R)
+#'   \code{"grid"} (N, K, R), \code{"hitmap"} (N, K, R), \code{"lines"} 
+#'   (N, K, R), \code{"barplot"} (N, K, R), \code{"boxplot"}, \code{"poly.dist"}
+#'   (N, K, R), \code{"mds"} (N, K, R), \code{"dendro3d"} (N, K, R), 
+#'   \code{"graph"} (R), \code{"projgraph"} (R);
 #'   \item or with title, when \code{type} is set among: \code{"color"} (N, K),
-#'   \code{"pie"} (N, R)
+#'   \code{"pie"} (N, R).
 #' }
 #' 
-#' In the list above, the charts available for a \code{numerical} SOM are marked
-#' with a N, with a K for a \code{korresp} SOM and with a R for 
+#' In the list above, the charts available for a \code{numerical} SOM are 
+#' indicated with a N, with a K for a \code{korresp} SOM and with an R for 
 #' \code{relational} SOM.
 #' 
-#' \code{\link{projectIGraph.somSC}} produces a projected graph from the 
+#' \code{projectIGraph} produces a projected graph from the 
 #' \link[igraph]{is_igraph} object passed to the argument \code{variable} as 
 #' described in (Olteanu and Villa-Vialaneix, 2015). The attributes of this 
 #' graph are the same than the ones obtained from the SOM map itself in the 
-#' function \code{\link{projectIGraph.somRes}}. \code{\link{plot.somSC}} used with 
-#' \code{type="projgraph"} calculates this graph and represents it by 
-#' positionning the super-vertexes at the center of gravity of the 
-#' super-clusters. This feature can be combined with \code{pie.graph=TRUE} to 
+#' function \code{projectIGraph}. \code{\link{plot.somSC}} used with
+#' \code{type = "projgraph"} calculates this graph and represents it by 
+#' positioning the super-vertexes at the center of gravity of the 
+#' super-clusters. This feature can be combined with \code{pie.graph = TRUE} to 
 #' super-impose the information from an external factor related to the 
 #' individuals in the original dataset (or, equivalently, to the vertexes of the
-#'  graph).
+#' graph).
 #'  
 #' @references
 #' Anderson M.J. (2001). A new method for non-parametric multivariate analysis 
@@ -129,15 +134,15 @@ dendro3dProcess <- function(v.ind, ind, tree, coord, mat.moy, scatter) {
 #' visualizing graphs. \emph{Journal de la Societe Francaise de Statistique}, 
 #' \strong{156}, 95-119.
 #' 
-#' @return The \code{superClass} function returns an object of class 
-#' \code{somSC} which is a list of the following elements: 
+#' @return The \code{superClass} method returns an object of class \code{somSC},
+#' which is a list of the following elements: 
 #'   \item{cluster}{The super clustering of the prototypes (only if either 
 #'   \code{k} or \code{h} are given by user).}
 #'   \item{tree}{An \code{\link{hclust}} object.}
 #'   \item{som}{The \code{somRes} object given as argument (see 
 #'   \code{\link{trainSOM}} for details).}
 #'   
-#' The \code{projectIGraph.somSC} function returns an object of class 
+#' The \code{projectIGraph} method returns an object of class 
 #' \code{\link[igraph]{is_igraph}} with the following attributes: 
 #'   \item{\code{layout}}{ provides the layout of the projected graph 
 #'   according to the center of gravity of the super-clusters positioned on 
@@ -152,8 +157,8 @@ dendro3dProcess <- function(v.ind, ind, tree, coord, mat.moy, scatter) {
 #' Madalina Olteanu \email{olteanu@ceremade.dauphine.fr}\cr
 #' Nathalie Vialaneix \email{nathalie.vialaneix@inrae.fr}
 #' 
-#' @seealso \code{\link{hclust}}, \code{\link{cutree}}, \code{\link{trainSOM}}, 
-#' \code{\link{plot.somRes}}
+#' @seealso \code{\link{hclust}}, \code{\link[stats]{cutree}}, 
+#' \code{\link{trainSOM}}, \code{\link{plot.somRes}}
 #' 
 #' @examples 
 #' set.seed(11051729)
@@ -167,13 +172,16 @@ dendro3dProcess <- function(v.ind, ind, tree, coord, mat.moy, scatter) {
 #' plot(sc)
 #' plot(sc, type = "grid")
 #' plot(sc, what = "obs", type = "hitmap")
+#' 
+#' # cut the clustering with a different number of clusters
+#' sc <- superClass(my.som, k = 5)
+#' summary(sc)
 
 superClass <- function(sommap, method, members, k, h, ...) {
   UseMethod("superClass")
 }
 
 #' @export
-
 superClass.somRes <- function(sommap, method = "ward.D", members = NULL, 
                               k = NULL, h = NULL, ...) {
   if (method == "ward.D2") {
@@ -190,7 +198,7 @@ superClass.somRes <- function(sommap, method = "ward.D", members = NULL,
   
   hc <- hclust(the.distances, method, members)
   if (!is.null(k) || !is.null(h)) {
-    sc <- cutree(hc, k, h)
+    sc <- stats::cutree(hc, k, h)
     res <- list("cluster" = as.numeric(sc), "tree" = hc, "som" = sommap)
   } else {
     res <- list("tree" = hc, "som" = sommap)
@@ -199,7 +207,7 @@ superClass.somRes <- function(sommap, method = "ward.D", members = NULL,
   return(res)
 }
 
-################################ S3 functions #################################
+################################ S3 methods ###################################
 #' @export
 #' @rdname superClass
 print.somSC <- function(x, ...) {
@@ -568,4 +576,35 @@ projectIGraph.somSC <- function(object, init.graph, ...) {
   
   proj.graph.sc <- set.graph.attribute(proj.graph.sc, "layout", positions)
   return(proj.graph.sc)
+}
+
+#' @export
+#' @rdname superClass
+cutree <- function(object, k = NULL, h = NULL) {
+  UseMethod("cutree")
+}
+
+#' @export
+cutree.default <- function(object, k = NULL, h = NULL) {
+  if (!inherits(object, "hclust") && !inherits(object, "somSC")) {
+    message <- paste0("You are currently trying to use 'SOMbrero::cutree'",
+                      "method that is only implemented for 'hclust' and",
+                      "'somSC' objects.")
+    stop(message, .call = TRUE)
+  }
+  
+  res <- stats::cutree(object, k = k, h = h)
+  
+  return(res)
+}
+
+#' @export
+cutree.somSC <- function(object, k = NULL, h = NULL) {
+  sc <- cutree(object$tree, k = k, h = h)
+  
+  res <- list("cluster" = as.numeric(sc), "tree" = object$tree, 
+              "som" = object$sommap)
+  class(res) <- "somSC"
+  
+  return(res)
 }

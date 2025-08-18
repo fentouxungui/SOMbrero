@@ -2,7 +2,7 @@
 % Please edit documentation in R/grids.R
 \name{initGrid}
 \alias{initGrid}
-\title{Create an empty grid}
+\title{Create an Empty Grid}
 \usage{
 initGrid(
   dimension = c(5, 5),

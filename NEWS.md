@@ -1,4 +1,12 @@
-# SOMbrero 1.4-2 [2025-06-25]
+# SOMbrero 1.4.4 [2025-08-18]
+
+## Bug fixes
+  * fixed a bug in MDS prototype plot for relational case
+  * fixed a bug related to issue #8 on Github (PCA initialization for relational
+  case)
+  * added a method to cut dendrogram in somSC results
+
+# SOMbrero 1.4-3 [2025-06-25]
 
 ## Bug fix
   * corrected a bug for datasets with NA columns

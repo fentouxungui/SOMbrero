@@ -1,6 +1,6 @@
 # Functions to handle graphs in SOM ###########################################
 
-#' @title Compute the projection of a graph on a grid
+#' @title Compute the Projection of a Graph on a Grid
 #' @name projectIGraph
 #' @aliases projectIGraph.somRes
 #' @export

@@ -6,7 +6,7 @@
 \alias{summary.myGrid}
 \alias{plot.myGrid}
 \alias{myGrid-class}
-\title{Methods for 'myGrid' objects.}
+\title{Methods for 'myGrid' Objects.}
 \usage{
 \method{print}{myGrid}(x, ...)
 

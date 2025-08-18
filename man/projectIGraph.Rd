@@ -3,7 +3,7 @@
 \name{projectIGraph}
 \alias{projectIGraph}
 \alias{projectIGraph.somRes}
-\title{Compute the projection of a graph on a grid}
+\title{Compute the Projection of a Graph on a Grid}
 \usage{
 projectIGraph(object, init.graph, ...)
 }

@@ -4,7 +4,7 @@
 \alias{trainSOM}
 \alias{summary.somRes}
 \alias{print.somRes}
-\title{Run the SOM algorithm}
+\title{Run the SOM Algorithm}
 \usage{
 trainSOM(x.data, ...)
 

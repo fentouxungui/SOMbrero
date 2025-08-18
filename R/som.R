@@ -284,7 +284,7 @@ calculateEnergy <- function(x.data, clustering, prototypes, parameters, ind.t) {
 
 ## Main function ##############################################################
 
-#' @title Run the SOM algorithm
+#' @title Run the SOM Algorithm
 #' @export
 #' @name trainSOM
 #' 
@@ -772,7 +772,7 @@ summary.somRes <- function(object, ...) {
   } 
 }
 
-#' @title Compute distances between prototypes
+#' @title Compute Distances Between Prototypes
 #' @export
 #' @name protoDist
 #' @aliases protoDist.somRes

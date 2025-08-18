@@ -3,7 +3,7 @@
 \name{protoDist}
 \alias{protoDist}
 \alias{protoDist.somRes}
-\title{Compute distances between prototypes}
+\title{Compute Distances Between Prototypes}
 \usage{
 protoDist(object, mode = c("complete", "neighbors"), radius = 1, ...)
 }
