@@ -1,3 +1,11 @@
+# SOMbrero 1.5.0 [2025-08-25]
+
+## New feature
+  * addition of a 'clustering' option in superClasses
+
+## Bug fix
+  * fixed a bug in cutree for somSC results
+
 # SOMbrero 1.4.4 [2025-08-18]
 
 ## Bug fixes

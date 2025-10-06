@@ -11,7 +11,7 @@
 \alias{cutree}
 \title{Create Super-Clusters from SOM Results}
 \usage{
-superClass(sommap, method, members, k, h, ...)
+superClass(sommap, method, members, k, h, clustering = NULL, ...)
 
 \method{print}{somSC}(x, ...)
 
@@ -44,6 +44,10 @@ of super-clusters to cut the dendrogram).}
 
 \item{h}{Argument passed to the \code{\link[stats]{cutree}} function (height 
 at which to cut the dendrogram).}
+
+\item{clustering}{Precomputed clustering provided by user. In this case, the
+function just returns a \code{somSC} object with this clustering but no
+associated dendrogram. Not all methods and plots apply to this case.}
 
 \item{\dots}{Used for \code{plot.somSC}: further arguments passed either to
 the function \code{\link{plot}} (case \code{type = "dendro"}) or to 
@@ -167,7 +171,7 @@ graph).
 }
 \examples{
 set.seed(11051729)
-my.som <- trainSOM(x.data = iris[,1:4])
+my.som <- trainSOM(x.data = iris[, 1:4])
 # choose the number of super-clusters
 sc <- superClass(my.som)
 plot(sc)
@@ -181,6 +185,9 @@ plot(sc, what = "obs", type = "hitmap")
 # cut the clustering with a different number of clusters
 sc <- superClass(my.som, k = 5)
 summary(sc)
+
+# provide a precomputed clustering
+sc2 <- superClass(my.som, clustering = sample(1:3, 25, replace = TRUE))
 }
 \references{
 Anderson M.J. (2001). A new method for non-parametric multivariate analysis 

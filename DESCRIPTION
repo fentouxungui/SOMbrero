@@ -1,7 +1,7 @@
 Package: SOMbrero
 Title: SOM Bound to Realize Euclidean and Relational Outputs
-Version: 1.4.4
-Date: 2025-08-18
+Version: 1.5.0
+Date: 2025-10-06
 Authors@R: c(person("Nathalie", "Vialaneix", role = c("aut", "cre"), 
                     email = "nathalie.vialaneix@inrae.fr", 
                     comment = c(ORCID = "0000-0003-1156-0639")),
@@ -29,7 +29,8 @@ Description: The stochastic (also called on-line) version of the Self-Organising
              handle (and impute) missing values and is delivered with a 
              graphical user interface based on 'shiny'.
 BugReports: https://github.com/tuxette/SOMbrero/issues
-URL: http://sombrero.clementine.wf/
+URL: https://forge.inrae.fr/nathalie.villa-vialaneix/sombrero,
+        http://sombrero.clementine.wf/
 Depends: R (>= 3.1.0), igraph (>= 1.0), markdown
 Imports: scatterplot3d, shiny, grDevices, graphics, stats, ggplot2,
         ggwordcloud, metR, interp, rlang
@@ -42,7 +43,7 @@ Encoding: UTF-8
 RoxygenNote: 7.3.2
 Language: en-US
 NeedsCompilation: no
-Packaged: 2025-08-18 15:11:14 UTC; nathalie
+Packaged: 2025-10-06 15:28:38 UTC; nathalie
 Author: Nathalie Vialaneix [aut, cre] (ORCID:
     <https://orcid.org/0000-0003-1156-0639>),
   Elise Maigne [aut],
@@ -51,4 +52,4 @@ Author: Nathalie Vialaneix [aut, cre] (ORCID:
   Fabrice Rossi [aut],
   Laura Bendhaiba [ctb],
   Julien Boelaert [ctb]
-Date/Publication: 2025-08-18 16:00:14 UTC
+Date/Publication: 2025-10-06 16:00:07 UTC
